@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+    usedmarket-backend:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        volumes:
+            - ./src:/usedMarket/src
+        ports:
+            - 4000:4000
+        env_file:
+            - ./.env.dev
+
+    usedmarket-database:
+        image: mysql:latest
+        environment:
+            MYSQL_DATABASE: 'usedMarket'
+            MYSQL_ROOT_PASSWORD: 'tjddnjs'
+        ports:
+            - 3307:3306

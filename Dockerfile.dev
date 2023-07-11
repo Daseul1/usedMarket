@@ -1,0 +1,10 @@
+FROM node:16
+
+COPY ./package.json /usedMarket/
+COPY ./yarn.lock /usedMarket/
+WORKDIR /usedMarket/
+RUN yarn install
+
+COPY . /usedMarket/
+
+CMD yarn start:dev
